@@ -1,6 +1,7 @@
 # NMAnnotation-tool
 This is a simple tool to annotate keypoints in images,for your computer vision tasks.
-In order to use it -you need *Opencv python2 or 3 Tkinter*
+In order to use it -you need *Opencv python2 or 3  and Tkinter*
+
 to install tkinter,use
 **sudo apt-get install python-tk or
 sudo apt-get install python-tk**
