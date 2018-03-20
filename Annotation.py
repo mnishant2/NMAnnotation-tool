@@ -12,11 +12,16 @@ import json
 
 # In[2]:
 
-
-from Tkinter import *
-import tkFileDialog
-import tkMessageBox
-
+try:
+    from Tkinter import *
+    import tkFileDialog
+    import tkMessageBox
+except ImportError:
+    from tkinter import *
+    from tkinter import filedialog
+    from tkinter import messagebox
+    tkFileDialog=filedialog
+    tkMessageBox=messagebox
 
 # In[7]:
 
@@ -102,7 +107,7 @@ for path in dirs:
     
     for index,i in enumerate(os.listdir(path),start=1):
         #print os.path.basename(i)
-        print i
+        # print i
         
 
         coordinateStore1 = CoordinateStore()
@@ -144,10 +149,10 @@ for path in dirs:
                         
                         root.mainloop()
                         
-                        print 'no points selected'
+                        print('no points selected')
                         pass
             elif k == 32:
-#                 print 'good'
+                # print 'good'
                 break
             
 #             print 'great'
@@ -156,7 +161,7 @@ for path in dirs:
 #             
             
         if len(os.listdir(path))==index:
-            with open(path+'/'+os.path.splitext(i)[0]+'.txt','wb')as f:
+            with open(path+'/'+os.path.splitext(i)[0]+'.txt','w')as f:
                 json.dump(coordinateStore1.points,f)
             break
         #cv2.circle(img,coordinateStore1.points[-1],5,(0,255,0),-1)
@@ -175,13 +180,13 @@ for path in dirs:
             break
         #n = cv2.waitKey(0)
         elif k == 32:
-            with open(path+'/'+os.path.splitext(i)[0]+'.txt','wb')as f:
+            with open(path+'/'+os.path.splitext(i)[0]+'.txt','w')as f:
                 json.dump(coordinateStore1.points,f)
             continue
         #if fla==True:
             
     cv2.destroyAllWindows()
-    with open(path+'/'+'namelist.txt','wb') as f:
+    with open(path+'/'+'namelist.txt','w') as f:
           json.dump(namelist,f)
     
 
@@ -194,6 +199,6 @@ for path in dirs:
 #     print i 
 # print namelist
 
-with open('/home/nishant/Desktop/namelist.txt','wb') as f:
-     json.dump([],f)
+# with open('/home/nishant/Desktop/namelist.txt','wb') as f:
+#      json.dump([],f)
 
